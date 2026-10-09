@@ -1,0 +1,114 @@
+/* Capa audiovisual persistente: fija, detrás de todo el contenido. */
+.film {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(31, 42, 34, 0.55), rgba(14, 15, 13, 0) 70%),
+    var(--charcoal);
+}
+
+.film__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: inset(0px 0px 0px 0px round 0px);
+  will-change: clip-path;
+  background: var(--ink);
+}
+
+.film__parallax,
+.film__media,
+.film__drift {
+  position: absolute;
+  inset: 0;
+}
+
+.film__media {
+  will-change: transform;
+}
+
+/* Movimiento ambiental: deriva lenta del encuadre (ciclo de 16 s, ida y vuelta). */
+.film__drift {
+  animation: film-drift 16s var(--ease-ambient) infinite alternate;
+}
+
+@keyframes film-drift {
+  from {
+    transform: scale(1.02) translate3d(-0.5%, 0.25%, 0);
+  }
+  to {
+    transform: scale(1.065) translate3d(0.5%, -0.35%, 0);
+  }
+}
+
+.film__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.film__dim {
+  position: absolute;
+  inset: 0;
+  background: var(--charcoal);
+  opacity: 0.18;
+}
+
+.film__shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.film__shade--top {
+  top: 0;
+  height: 24vh;
+  background: linear-gradient(180deg, rgba(10, 11, 9, 0.55), rgba(10, 11, 9, 0));
+}
+
+.film__shade--bottom {
+  bottom: 0;
+  height: 28vh;
+  background: linear-gradient(0deg, rgba(10, 11, 9, 0.5), rgba(10, 11, 9, 0));
+}
+
+.film__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  text-align: center;
+  color: var(--warm-60);
+  background:
+    linear-gradient(160deg, var(--forest), var(--charcoal) 70%);
+}
+
+.film__placeholder code {
+  font-size: 12px;
+  color: var(--lime);
+}
+
+/* Pausa de movimiento (control del usuario o prefers-reduced-motion). */
+html.motion-paused .film__drift,
+html.motion-paused .hero__cue-line,
+html.motion-paused .exp__ring {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film__drift {
+    animation: none;
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 899px) {
+  /* Encuadre móvil: mantiene la construcción en el centro del recorte vertical. */
+  .film__video {
+    object-position: 46% 50%;
+  }
+}
