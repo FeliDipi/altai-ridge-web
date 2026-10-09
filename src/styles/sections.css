@@ -15,11 +15,11 @@
   top: calc(var(--nav-h) + 3vh);
   left: calc(var(--gutter) - 0.04em);
   font-family: var(--font-display);
-  font-weight: 200;
+  font-weight: 280;
   font-size: clamp(4.6rem, 16.5vw, 17rem);
   line-height: 0.84;
   letter-spacing: -0.045em;
-  text-shadow: 0 0 60px rgba(10, 11, 9, 0.18);
+  text-shadow: var(--halo);
 }
 
 .hero__rule {
@@ -54,14 +54,16 @@
 
 .hero__welcome {
   font-family: var(--font-display);
-  font-weight: 250;
+  font-weight: 300;
   font-size: clamp(2rem, 3.2vw, 3.1rem);
+  text-shadow: var(--halo);
   line-height: 1.02;
   letter-spacing: -0.02em;
 }
 
 .hero__intro {
-  color: var(--warm-80);
+  color: var(--warm);
+  text-shadow: var(--halo-text);
   font-size: 14.5px;
   line-height: 1.65;
 }
@@ -253,9 +255,17 @@
   position: absolute;
   top: 4vh;
   left: calc(var(--gutter) - 0.04em);
-  z-index: 1;
+  z-index: 2;
   font-size: clamp(2.8rem, 7.6vw, 8.6rem);
-  text-shadow: 0 0 50px rgba(10, 11, 9, 0.25);
+}
+
+.inhabit__scene--1 .inhabit__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 46% 36% at 20% 16%, rgba(10, 11, 9, 0.55), rgba(10, 11, 9, 0) 72%);
 }
 
 .inhabit__copy {
@@ -266,7 +276,7 @@
 
 .inhabit__heading {
   font-family: var(--font-display);
-  font-weight: 250;
+  font-weight: 300;
   font-size: clamp(1.9rem, 3.2vw, 3.4rem);
   line-height: 1;
   letter-spacing: -0.02em;
@@ -400,7 +410,7 @@
 
 .mat__title {
   font-family: var(--font-display);
-  font-weight: 200;
+  font-weight: 280;
   font-size: clamp(3.4rem, 6.6vw, 7.6rem);
   line-height: 0.95;
   letter-spacing: -0.035em;
@@ -477,7 +487,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse 55% 45% at 50% 52%, rgba(10, 11, 9, 0.42), rgba(10, 11, 9, 0) 72%);
+  background: radial-gradient(ellipse 60% 50% at 50% 52%, rgba(10, 11, 9, 0.58), rgba(10, 11, 9, 0) 74%);
   pointer-events: none;
 }
 
@@ -503,7 +513,6 @@
 .exp__phrase {
   font-size: clamp(3rem, 9.4vw, 11rem);
   text-align: left;
-  text-shadow: 0 0 60px rgba(10, 11, 9, 0.3);
   will-change: transform;
 }
 
@@ -512,7 +521,8 @@
   bottom: 12vh;
   left: var(--gutter);
   right: var(--gutter);
-  color: var(--warm-80);
+  color: var(--warm);
+  text-shadow: var(--halo-text);
 }
 
 @media (max-width: 899px) {
@@ -622,7 +632,8 @@
 .stage__title {
   grid-area: title;
   font-family: var(--font-display);
-  font-weight: 200;
+  font-weight: 280;
+  text-shadow: var(--halo);
   font-size: clamp(2.4rem, 5vw, 5.6rem);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -630,7 +641,8 @@
 
 .stage__text {
   grid-area: text;
-  color: var(--warm-80);
+  color: var(--warm);
+  text-shadow: var(--halo-text);
   font-size: 14.5px;
 }
 
@@ -685,7 +697,8 @@
 }
 
 .closing__text {
-  color: var(--warm-80);
+  color: var(--warm);
+  text-shadow: var(--halo-text);
   max-width: 30em;
 }
 

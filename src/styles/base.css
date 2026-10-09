@@ -23,6 +23,10 @@
   --ease-ambient: cubic-bezier(0.45, 0, 0.55, 1);
   --t-hover: 240ms;
 
+  /* Legibilidad sobre video: halo oscuro suave detrás de titulares y textos. */
+  --halo: 0 1px 1px rgba(10, 11, 9, 0.35), 0 0 18px rgba(10, 11, 9, 0.45), 0 0 52px rgba(10, 11, 9, 0.35);
+  --halo-text: 0 1px 2px rgba(10, 11, 9, 0.5), 0 0 14px rgba(10, 11, 9, 0.55);
+
   /* Espaciado */
   --gutter: 4vw;
   --nav-h: 72px;
@@ -129,7 +133,8 @@ main {
 
 .display {
   font-family: var(--font-display);
-  font-weight: 200;
+  font-weight: 300;
+  text-shadow: var(--halo);
   font-size: clamp(2.6rem, 7.2vw, 8.4rem);
   line-height: 0.94;
   letter-spacing: -0.03em;
@@ -138,8 +143,9 @@ main {
 .lead {
   font-size: clamp(15px, 1.15vw, 17px);
   line-height: 1.7;
-  color: var(--warm-80);
+  color: var(--warm);
   max-width: 34em;
+  text-shadow: var(--halo-text);
 }
 
 /* Líneas con revelado por máscara */
@@ -178,8 +184,9 @@ main {
 
 .scrim--hero {
   background:
+    radial-gradient(ellipse 58% 52% at 22% 30%, rgba(10, 11, 9, 0.5), rgba(10, 11, 9, 0) 72%),
     linear-gradient(180deg, rgba(10, 11, 9, 0.42) 0%, rgba(10, 11, 9, 0) 38%),
-    radial-gradient(ellipse 50% 45% at 88% 88%, rgba(10, 11, 9, 0.55), rgba(10, 11, 9, 0) 70%),
+    radial-gradient(ellipse 50% 45% at 88% 88%, rgba(10, 11, 9, 0.62), rgba(10, 11, 9, 0) 70%),
     radial-gradient(ellipse 30% 30% at 8% 92%, rgba(10, 11, 9, 0.45), rgba(10, 11, 9, 0) 70%);
 }
 
@@ -188,7 +195,9 @@ main {
 }
 
 .scrim--bottom {
-  background: linear-gradient(0deg, rgba(10, 11, 9, 0.78) 0%, rgba(10, 11, 9, 0.3) 45%, rgba(10, 11, 9, 0) 70%);
+  background:
+    radial-gradient(ellipse 55% 50% at 24% 58%, rgba(10, 11, 9, 0.5), rgba(10, 11, 9, 0) 72%),
+    linear-gradient(0deg, rgba(10, 11, 9, 0.82) 0%, rgba(10, 11, 9, 0.36) 45%, rgba(10, 11, 9, 0) 72%);
 }
 
 .skip-link {

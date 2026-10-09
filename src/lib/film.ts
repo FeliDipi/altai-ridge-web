@@ -45,7 +45,7 @@ interface FilmState {
 const full = (): Box => ({ t: 0, r: 0, b: 0, l: 0, radius: 0 });
 
 const states: Record<FilmStateName, FilmState> = {
-  full: { box: full, scale: 1, x: 0, y: 0, dim: 0.18 },
+  full: { box: full, scale: 1, x: 0, y: 0, dim: 0.24 },
   framed: {
     box: (w, _h, m) => {
       const g = m ? 10 : Math.round(w * 0.016);
@@ -54,7 +54,7 @@ const states: Record<FilmStateName, FilmState> = {
     scale: 1.03,
     x: 0,
     y: 0,
-    dim: 0.38,
+    dim: 0.46,
   },
   panorama: {
     box: (w, h, m) =>
@@ -124,9 +124,9 @@ const states: Record<FilmStateName, FilmState> = {
     y: 0,
     dim: 0.04,
   },
-  open: { box: full, scale: 1, x: 0, y: 0, dim: 0.36 },
+  open: { box: full, scale: 1, x: 0, y: 0, dim: 0.44 },
   journey: { box: full, scale: 1.04, x: 0, y: 0, dim: 0.66 },
-  closing: { box: full, scale: 1, x: 0, y: 0, dim: 0.26 },
+  closing: { box: full, scale: 1, x: 0, y: 0, dim: 0.36 },
 };
 
 interface Values {
@@ -199,7 +199,7 @@ interface Segment {
 
 let segments: Segment[] = [];
 let segmentSeq = 0;
-const proxy: Values = { t: 0, r: 0, b: 0, l: 0, radius: 0, scale: 1, x: 0, y: 0, py: 0, dim: 0.18 };
+const proxy: Values = { t: 0, r: 0, b: 0, l: 0, radius: 0, scale: 1, x: 0, y: 0, py: 0, dim: 0.24 };
 let smoothing = 0.35;
 
 const px = (n: number): string => `${Math.max(0, Math.round(n * 10) / 10)}px`;
